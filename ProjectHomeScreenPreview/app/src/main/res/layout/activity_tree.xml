@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TreeActivity"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/green_border"/>
+
+    <TextView
+        android:id="@+id/viewPlasticRecycled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/green"
+        android:textSize="18sp"
+        android:layout_marginHorizontal="5dp"
+        android:text="@string/title_plastic_bottles_recycled"/>
+
+    <TextView
+        android:id="@+id/viewGlassRecycled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/green"
+        android:textSize="18sp"
+        android:layout_marginHorizontal="5dp"
+        android:text="@string/title_glass_bottles_recycled" />
+
+    <TextView
+        android:id="@+id/textMotivationalText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/green"
+        android:textSize="18sp"
+        android:layout_marginHorizontal="5dp"
+        android:text="@string/title_motivationalTextTreesPlanted" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:max="150"
+        android:progress="139"
+        android:layout_marginHorizontal="5dp"
+        android:progressTint="@color/green"/>
+
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Share" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:text="@string/title_buy_trees" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="125dp"
+        android:text="@string/title_plant_a_tree" />
+
+</LinearLayout>
+

@@ -1,0 +1,24 @@
+<com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/nav_viewTop"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:menu="@menu/top_nav_menu"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="Trashy"
+            android:textColor="#6aa84f"
+            android:textSize="30sp"
+            app:fontFamily="@font/caveat_bold"
+            tools:text="Trashy" />
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+

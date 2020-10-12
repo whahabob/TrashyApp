@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_action_profile"
+        app:itemIconTint="@color/green"
+        android:color="@android:color/holo_blue_dark"
+        android:state_checked="false"
+        android:title="profile" />
+
+    <item
+        android:id="@+id/navigation_appname"
+        android:state_checked="true"
+
+        android:title=""/>
+
+    <item
+        android:id="@+id/navigation_tree"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="tree overview" />
+
+</menu>
