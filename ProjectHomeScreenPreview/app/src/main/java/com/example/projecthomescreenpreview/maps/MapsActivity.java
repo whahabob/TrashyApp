@@ -1,45 +1,194 @@
 package com.example.projecthomescreenpreview.maps;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.projecthomescreenpreview.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap map;
-    private SupportMapFragment mapFragment;
+    private GoogleMap mMap;
+    private boolean mLocationPermissionGranted;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private AutoCompleteTextView mSearchText;
+
+    private static final String TAG = "MapsActivity";
+    private static final int ERROR_DIALOG_REQUEST = 9001;
+    public static final int PERMISSIONS_REQUEST_ENABLE_GPS = 9002;
+    public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 9003;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final float DEFAULT_ZOOM = 20f;
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    //private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(new LatLng(-40, -168), new LatLng(71, 136));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Asks for permissions on map creation
+        getLocationPermission();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        mSearchText = (AutoCompleteTextView) findViewById(R.id.input_search);
+
+        init();
     }
 
-    /*
-    private void userLocationFAB(){
-        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        FAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    private void init() {
+        Log.d(TAG, "init: initializing");
 
-                if (locationEnabled) {
-                    getCurrentLocation();
+        mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+
+                // Changes enter key to search
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE || keyEvent.getAction() == KeyEvent.ACTION_DOWN || keyEvent.getAction() == KeyEvent.KEYCODE_ENTER) {
+
+                    // Execute search
+                    geoLocate();
                 }
+
+                return false;
             }
         });
+
+        hideSoftKeyboard();
     }
-    */
+
+    private void geoLocate() {
+        Log.d(TAG, "geoLocate: geolocating");
+
+        String searchString = mSearchText.getText().toString();
+
+        Geocoder geocoder = new Geocoder(MapsActivity.this);
+        List<Address> list = new ArrayList<>();
+        try {
+            list = geocoder.getFromLocationName(searchString, 1); // looks for only 1 result atm
+        } catch (IOException e) {
+            Log.e(TAG, "geoLocate: IOException: " + e.getMessage());
+        }
+
+        // So if actually are some results
+        if (list.size() > 0) {
+            Address address = list.get(0);
+
+            Log.d(TAG, "geoLocate: found a location: " + address.toString());
+            //Toast.makeText(this, address.toString(), Toast.LENGTH_SHORT).show();
+
+            moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM, address.getAddressLine(0));
+        }
+        hideSoftKeyboard();
+    }
+
+    private void getLocationPermission() {
+
+        // Checks location permissions
+        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this.getApplicationContext(), COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mLocationPermissionGranted = true;
+        } else {
+
+            // Asks for permissions if not there (small if)
+            ActivityCompat.requestPermissions(this, permissions, LOCATION_PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    public void onRequestPermissionResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        mLocationPermissionGranted = false;
+
+        switch (requestCode) {
+            case LOCATION_PERMISSION_REQUEST_CODE: { // If requesting location permission
+                if (grantResults.length > 0) { // If there is some permission
+
+                    // Check if any of the permissions are denied
+                    for (int i = 0; i < grantResults.length; i++) {
+                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                            mLocationPermissionGranted = false;
+                            return;
+                        }
+                    }
+
+                    mLocationPermissionGranted = true;
+                }
+            }
+        }
+    }
+
+    private void getDeviceLocation() {
+
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        try {
+            if (mLocationPermissionGranted) {
+
+                final Task location = mFusedLocationProviderClient.getLastLocation();
+                location.addOnCompleteListener(new OnCompleteListener() {
+                    @Override
+                    public void onComplete(@NonNull Task task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "onComplete: found location");
+                            Location currentLocation = (Location) task.getResult();
+
+                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM, "My Location");
+                        } else {
+                            Log.d(TAG, "onComplete: current location is null");
+                            Toast.makeText(MapsActivity.this, "Unable to get current location", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        } catch (SecurityException e) {
+            Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage());
+        }
+    }
+
+    private void moveCamera(LatLng latLng, float zoom, String title) {
+        Log.d(TAG, "moveCamera: moving the camera to an input LatLng: " + latLng.latitude + ", " + latLng.longitude);
+        mMap.moveCamera((CameraUpdateFactory.newLatLngZoom(latLng, zoom)));
+
+        if (title != "My Location") {
+
+            MarkerOptions opt = new MarkerOptions().position(latLng).title(title).snippet("Nearby recycling centres are marked");
+            mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapsActivity.this));
+            mMap.addMarker(opt).showInfoWindow();
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -54,7 +203,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        map = googleMap;
+        Toast.makeText(this, "Map is Ready", Toast.LENGTH_SHORT).show();
+        mMap = googleMap;
+
+        if (mLocationPermissionGranted) {
+            getDeviceLocation();
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            mMap.setMyLocationEnabled(true);
+            // mMap.getUiSettings().setMyLocationButtonEnabled(false);
+        }
 
         // Invokes the main() method in MapData to generate the waste centres
 
@@ -94,17 +255,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // Puts a marker for each location on the map, pulling locations from MapData and moving the camera to it
 
             String markerSnippet = centre.markerString.toString();
-
-            LatLng location = new LatLng(centre.lat, centre.lng);
-            MarkerOptions markerOpt = new MarkerOptions().position(location).title(centre.AddressLine1 + ", " + centre.Postcode).snippet(markerSnippet);
+            LatLng locationCentre = new LatLng(centre.lat, centre.lng);
+            MarkerOptions markerOpt = new MarkerOptions().position(locationCentre).title(centre.AddressLine1 + ", " + centre.Postcode).snippet(markerSnippet);
 
             // Set infoWindow adapter view
 
-            map.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapsActivity.this));
-
-            map.addMarker(markerOpt).showInfoWindow();
-            map.moveCamera(CameraUpdateFactory.newLatLng(location));
+            mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapsActivity.this));
+            mMap.addMarker(markerOpt).showInfoWindow();
 
         }
     }
+
+    private void hideSoftKeyboard() {
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
 }

@@ -1,5 +1,11 @@
 package com.example.projecthomescreenpreview.maps;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import static android.icu.lang.UCharacter.toUpperCase;
+
 public class WasteCentre {
 
     // Declares all the strings, coordinates and booleans that make up the location and recycling information data
