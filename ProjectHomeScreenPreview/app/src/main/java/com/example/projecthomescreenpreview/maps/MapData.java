@@ -1,5 +1,13 @@
 package com.example.projecthomescreenpreview.maps;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 
 public class MapData { // Generates and populates the ArrayList of Waste Centre data, also processes the data for use elsewhere (i.e. MapsActivity)
