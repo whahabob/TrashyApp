@@ -29,18 +29,13 @@
             app:fontFamily="@font/caveat_bold"
             tools:text="Trashy" />
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
-
     <RelativeLayout
         android:id="@+id/rellay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/grad"
         android:paddingBottom="20dp"
-        android:layout_below="@+id/nav_viewTop"
-        >
-
+        android:layout_below="@+id/nav_viewTop" >
         <RelativeLayout
             android:id="@+id/imgUser"
             android:layout_width="wrap_content"
@@ -48,7 +43,6 @@
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/circle_border">
-
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
@@ -57,14 +51,11 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/circle"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_user"
-                />
-
+                android:src="@drawable/ic_user"/>
         </RelativeLayout>
 
         <EditText
             android:id="@+id/name"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgUser"
@@ -76,12 +67,10 @@
             android:textColor="#000000"
             android:textSize="32dp"
             android:inputType="textNoSuggestions"
-            android:background="@android:color/transparent"
-            />
+            android:background="@android:color/transparent"/>
 
         <TextView
             android:id="@+id/location_name"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
@@ -89,14 +78,12 @@
             android:fontFamily="sans-serif"
             android:layout_marginTop="2sp"
             android:layout_marginBottom="10sp"
-            android:text="London,Ealing"
+            android:text="London, Ealing"
             android:textAllCaps="true"
             android:textSize="12dp"
-            android:textColor="@color/address"
-            />
+            android:textColor="@color/address" />
 
     </RelativeLayout>
-
 
     <LinearLayout
         android:id="@+id/linlay1"
@@ -104,8 +91,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/rellay1"
         android:orientation="horizontal" >
-
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,13 +100,11 @@
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:gravity="center" >
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" >
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,9 +112,7 @@
                     android:textSize="20sp"
                     android:fontFamily="sans-serif-black"
                     android:layout_marginLeft="5sp"
-                    android:layout_marginTop="5sp"
-                    />
-
+                    android:layout_marginTop="5sp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -140,30 +121,17 @@
                     android:textSize="15sp"
                     android:fontFamily="sans-serif-black"
                     android:layout_marginLeft="5sp"
-                    android:layout_marginTop="5sp"
-                    />
-
-
-
-
-
+                    android:layout_marginTop="5sp"/>
             </LinearLayout>
-
         </RelativeLayout>
-
-
     </LinearLayout>
-
 
     <RelativeLayout
         android:id="@+id/bottomLay"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linlay1"
         android:layout_marginTop="0dp" >
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,14 +139,11 @@
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical" >
-
             <RelativeLayout
-
                 android:id="@+id/email1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -186,7 +151,6 @@
                 android:text="Email"
                 android:textColor="@color/headings"
                 android:textSize="13sp" />
-
             <EditText
                 android:id="@+id/editTextTextPersonEmail"
                 android:layout_width="match_parent"
@@ -196,24 +160,14 @@
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:text="bob.trashington@gmail.com"
-                android:background="@android:color/transparent"
-                />
+                android:background="@android:color/transparent"/>
 
-
-            <view
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/gray" />
-
-
-            <LinearLayout
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/email"
-                android:orientation="vertical" >
-
+        <LinearLayout
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/email"
+            android:orientation="vertical" >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -221,7 +175,6 @@
                     android:text="Password"
                     android:textColor="@color/headings"
                     android:textSize="13sp" />
-
                 <EditText
                     android:id="@+id/editTextTextPersonPassword"
                     android:layout_width="match_parent"
@@ -231,57 +184,33 @@
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:text="********"
-                    android:background="@android:color/transparent"
-                    />
-
-                <view
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/gray" />
-
-
+                    android:background="@android:color/transparent"/>
                 <LinearLayout
                     android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/password"
                     android:orientation="vertical" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Phone"
-                    android:textColor="@color/headings"
-                    android:textSize="13sp" />
-
-                <EditText
-
-                    android:id="@+id/editTextTextPersonNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:fontFamily="sans-serif-light"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:text="+44786345623"
-                    android:background="@android:color/transparent"
-
-                    />
-
-                <view
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/gray" />
-
-
-            </LinearLayout>
-
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Phone"
+                        android:textColor="@color/headings"
+                        android:textSize="13sp" />
+                    <EditText
+                        android:id="@+id/editTextTextPersonNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:text="+44786345623"
+                        android:background="@android:color/transparent"
+                        />
+                </LinearLayout>
         </LinearLayout>
-
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_view"
             android:layout_width="match_parent"
@@ -294,8 +223,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:menu="@menu/bottom_nav_menu" />
-
-
     </RelativeLayout>
 
 
