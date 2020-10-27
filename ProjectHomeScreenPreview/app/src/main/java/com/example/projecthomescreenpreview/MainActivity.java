@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         final Intent intentShop = new Intent(this, ShopActivity.class);
         final Intent intentCalander = new Intent(this, CalanderActivity.class);
         final Intent intentTree = new Intent(this, TreeActivity.class);
+        final Intent intentMain = new Intent(this, MainActivity.class);
+        final Intent intentBarcode = new Intent(this, BarcodeActivity.class);
 
 
 
@@ -67,15 +69,15 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.navigation_barcode:
                                 item.setCheckable(false);
-                                startActivity(intentProfile);
+                                startActivity(intentBarcode);
                                 break;
                             case R.id.navigation_home:
                                 item.setCheckable(false);
-                                startActivity(intentProfile);
+                                startActivity(intentMain);
                                 break;
                             case R.id.navigation_notifications:
                                 item.setCheckable(false);
-                                startActivity(intentProfile);
+                                startActivity(intentMain);
                                 break;
                         }
                         return true;
