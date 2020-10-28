@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         final Intent intentMain = new Intent(this, MainActivity.class);
         final Intent intentBarcode = new Intent(this, BarcodeActivity.class);
 
-
-
         topNavView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override

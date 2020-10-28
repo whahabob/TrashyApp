@@ -45,7 +45,7 @@ public class TreeActivity extends AppCompatActivity {
                                 System.out.println("kom hier gewoon");
                                 break;
                             case R.id.navigation_tree:
-                                startActivity(intentTree);
+                                //startActivity(intentTree);
                                 item.setCheckable(false);
                                 break;
                             default:
@@ -54,7 +54,6 @@ public class TreeActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
         //Used for the slider
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);

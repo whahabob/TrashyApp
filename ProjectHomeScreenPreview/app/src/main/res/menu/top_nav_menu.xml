@@ -17,7 +17,7 @@
 
     <item
         android:id="@+id/navigation_tree"
-
-        android:title="257 points" />
+        android:title="258 points"
+        />
 <!--  android:icon="@drawable/ic_notifications_black_24dp" -->
 </menu>

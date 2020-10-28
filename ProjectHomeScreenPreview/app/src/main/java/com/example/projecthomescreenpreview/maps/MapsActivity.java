@@ -1,6 +1,7 @@
 package com.example.projecthomescreenpreview.maps;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -8,6 +9,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
@@ -19,7 +21,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.projecthomescreenpreview.ProfileActivity;
 import com.example.projecthomescreenpreview.R;
+import com.example.projecthomescreenpreview.TreeActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,6 +34,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,7 +59,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         // Asks for permissions on map creation
         getLocationPermission();
 
@@ -64,6 +68,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mSearchText = (AutoCompleteTextView) findViewById(R.id.input_search);
+
+        //Top nav bar
+        BottomNavigationView topNavView = findViewById(R.id.nav_viewTop);
+        topNavView.setSelectedItemId(R.id.navigation_appname);
+        final Intent intentProfile = new Intent(this, ProfileActivity.class);
+        final Intent intentTree = new Intent(this, TreeActivity.class);
+
+        topNavView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.navigation_profile:
+                                startActivity(intentProfile);
+                                item.setCheckable(false);
+                                break;
+                            case R.id.navigation_appname:
+                                System.out.println("kom hier gewoon");
+                                break;
+                            case R.id.navigation_tree:
+                                //startActivity(intentTree);
+                                item.setCheckable(false);
+                                break;
+                            default:
+                                throw new IllegalStateException("Unexpected value: " + item.getItemId());
+                        }
+                        return true;
+                    }
+                });
 
         init();
     }

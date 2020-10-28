@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ShopActivity">
 
+    <include layout="@layout/layout_top_bar" />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
