@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                                 System.out.println("kom hier gewoon");
                                 break;
                             case R.id.navigation_tree:
-                                startActivity(intentTree);
+                                //startActivity(intentTree);
                                 item.setCheckable(false);
                                 break;
                             default:
@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn_TR = findViewById(R.id.imageButton_topRight);
         ImageButton btn_MR = findViewById(R.id.imageButton_middleRight);
         ImageButton btn_BR = findViewById(R.id.imageButton_bottomRight);
+        ImageButton btn_BL = findViewById(R.id.imageButton_bottomLeft);
 
 
         btn_TL.setOnClickListener(new View.OnClickListener() {
@@ -138,6 +139,17 @@ public class MainActivity extends AppCompatActivity {
                 bottomRight_OnClick(v);
             }
         });
+        btn_BL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomLeft_OnClick(v);
+            }
+        });
+    }
+
+    private void bottomLeft_OnClick(View v) {
+        Intent intent = new Intent(this, TreeActivity.class);
+        startActivity(intent);
     }
 
     private void topRight_OnClick(View v) {
