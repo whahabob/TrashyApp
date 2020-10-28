@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CharityDetailsFragment#newInstance} factory method to
@@ -64,9 +67,10 @@ public class CharityDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
                 // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_charity_details, container, false);
+        View v = inflater.inflate(R.layout.fragment_charity_details, container, false);
 
-       View v = inflater.inflate(R.layout.fragment_charity_details, container, false);
+
+
 
         button_Charity1 = (Button) v.findViewById(R.id.button_Charity1);
         button_Charity2 = (Button) v.findViewById(R.id.button_Charity2);
@@ -85,7 +89,7 @@ public class CharityDetailsFragment extends Fragment {
                 ((CharityInfoActivity) getActivity()).setViewPager(2);
             }
         });
-// newly added
+
         
         button_Back2Shop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +103,4 @@ public class CharityDetailsFragment extends Fragment {
         return v;
         };
 
-
-            //return inflater.inflate(R.layout.fragment_charity_details, container, false);
     }

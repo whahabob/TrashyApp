@@ -58,12 +58,6 @@ public class ShopActivity extends AppCompatActivity {
                 });
 
 
-
-
-
-
-
-
         Button btn_CashOut = findViewById(R.id.btn_CashOut);
         btn_CashOut.setOnClickListener(new OnClickListener() {
             @Override

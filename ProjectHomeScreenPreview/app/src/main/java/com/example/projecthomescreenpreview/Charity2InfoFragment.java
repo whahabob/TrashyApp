@@ -63,7 +63,6 @@ public class Charity2InfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_charity2_info, container, false);
         View v = inflater.inflate(R.layout.fragment_charity2_info, container, false);
 
         Button_Charity2Back = (Button) v.findViewById(R.id.Button_Charity2Back);
