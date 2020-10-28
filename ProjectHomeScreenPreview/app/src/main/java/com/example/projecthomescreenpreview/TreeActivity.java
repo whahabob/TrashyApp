@@ -43,10 +43,10 @@ public class TreeActivity extends AppCompatActivity {
                                 item.setCheckable(false);
                                 break;
                             case R.id.navigation_appname:
-                                System.out.println("kom hier gewoon");
+                                //Do nothing
                                 break;
                             case R.id.navigation_tree:
-                                //startActivity(intentTree);
+                                //Do nothing
                                 item.setCheckable(false);
                                 break;
                             default:

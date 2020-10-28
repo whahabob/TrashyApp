@@ -33,11 +33,10 @@ public class ProfileActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.navigation_profile:
-                                startActivity(intentProfile);
-                                item.setCheckable(false);
+                                //Do nothing
                                 break;
                             case R.id.navigation_appname:
-                                System.out.println("kom hier gewoon");
+                                //Do nothing
                                 break;
                             case R.id.navigation_tree:
                                 item.setCheckable(false);

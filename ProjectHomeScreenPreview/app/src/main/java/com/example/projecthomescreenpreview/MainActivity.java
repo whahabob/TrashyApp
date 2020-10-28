@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                                 item.setCheckable(false);
                                 break;
                             case R.id.navigation_appname:
-                                System.out.println("Stay on page (test message)");
+                                //Do nothing
                                 break;
                             case R.id.navigation_tree:
                                 //startActivity(intentTree);
@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case R.id.navigation_home:
                                 item.setCheckable(false);
-                                System.out.println("Stay on page (test message)");
+                                //Do nothing
                                 break;
                             case R.id.navigation_notifications:
                                 item.setCheckable(false);
-                                System.out.println("Stay on page (test message)");
+                                //Do nothing
                                 break;
                         }
                         return true;

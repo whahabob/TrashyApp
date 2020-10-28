@@ -42,7 +42,7 @@ public class ShopActivity extends AppCompatActivity {
                                 item.setCheckable(false);
                                 break;
                             case R.id.navigation_appname:
-                                System.out.println("kom hier gewoon");
+                                //Do nothing
                                 break;
                             case R.id.navigation_tree:
                                 //startActivity(intentTree);
