@@ -9,30 +9,7 @@
     android:orientation="vertical">
 
     <!-- <include layout="@layout/content_pickup" /> -->
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_viewTop"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintTop_toTopOf="@+id/container"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:background="#ffffff"
-        app:menu="@menu/top_nav_menu" >
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_horizontal"
-            android:text="Trashy"
-            android:textColor="#6aa84f"
-            android:textSize="30sp"
-            app:fontFamily="@font/caveat_bold"
-            tools:text="Trashy" />
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    <include layout="@layout/layout_top_bar" />
 
     <TextView
         android:id="@+id/textView2"
@@ -102,5 +79,4 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="125dp"
         android:text="@string/title_submit"/>
-
 </LinearLayout>

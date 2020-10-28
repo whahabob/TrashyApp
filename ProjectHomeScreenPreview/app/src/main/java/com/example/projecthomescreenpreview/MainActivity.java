@@ -104,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn_BR = findViewById(R.id.imageButton_bottomRight);
 
 
-
-
         btn_TL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
