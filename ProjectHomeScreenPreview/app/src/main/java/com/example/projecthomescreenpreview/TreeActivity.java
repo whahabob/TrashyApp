@@ -26,8 +26,9 @@ public class TreeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree);
-        BottomNavigationView topNavView = findViewById(R.id.nav_viewTop);
 
+        //Top nav bar
+        BottomNavigationView topNavView = findViewById(R.id.nav_viewTop);
         topNavView.setSelectedItemId(R.id.navigation_appname);
         final Intent intentProfile = new Intent(this, ProfileActivity.class);
         final Intent intentTree = new Intent(this, TreeActivity.class);
@@ -54,7 +55,8 @@ public class TreeActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-        //Used for the slider
+
+        //For slider:
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);

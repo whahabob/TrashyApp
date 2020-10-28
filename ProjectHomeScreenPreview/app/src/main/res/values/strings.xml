@@ -105,7 +105,7 @@
     <string name="title_postal_code">Postal code</string>
     <string name="title_house_number">House number</string>
     <string name="title_select_type">Select type of trash</string>
-    <string name="feedbackGrof">Grof afval</string>
+    <string name="feedbackGrof">Domestic waste</string>
     <string name="feedbackElectrical">Electrical components</string>
     <string name="feedbackGarden">Garden waste</string>
     <string name="title_name">Name</string>

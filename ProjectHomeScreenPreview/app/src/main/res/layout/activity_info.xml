@@ -40,5 +40,6 @@
         app:layout_anchorGravity="center"
         tools:text="Trashy" />
 
+    <include layout="@layout/layout_bottom_bar" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -21,6 +21,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.projecthomescreenpreview.BarcodeActivity;
+import com.example.projecthomescreenpreview.MainActivity;
 import com.example.projecthomescreenpreview.ProfileActivity;
 import com.example.projecthomescreenpreview.R;
 import com.example.projecthomescreenpreview.TreeActivity;
@@ -69,11 +71,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         mSearchText = (AutoCompleteTextView) findViewById(R.id.input_search);
 
-        //Top nav bar
+        //Nav bars
+        BottomNavigationView bottomNavView = findViewById(R.id.nav_view);
         BottomNavigationView topNavView = findViewById(R.id.nav_viewTop);
         topNavView.setSelectedItemId(R.id.navigation_appname);
         final Intent intentProfile = new Intent(this, ProfileActivity.class);
-        final Intent intentTree = new Intent(this, TreeActivity.class);
+        final Intent intentBarcode = new Intent(this, BarcodeActivity.class);
+        final Intent intentMain = new Intent(this, MainActivity.class);
 
         topNavView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -93,6 +97,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 break;
                             default:
                                 throw new IllegalStateException("Unexpected value: " + item.getItemId());
+                        }
+                        return true;
+                    }
+                });
+        bottomNavView.setSelectedItemId(R.id.navigation_home);
+        bottomNavView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.navigation_barcode:
+                                item.setCheckable(false);
+                                startActivity(intentBarcode);
+                                break;
+                            case R.id.navigation_home:
+                                item.setCheckable(false);
+                                startActivity(intentMain);
+                                break;
+                            case R.id.navigation_notifications:
+                                item.setCheckable(false);
+                                startActivity(intentMain);
+                                break;
                         }
                         return true;
                     }

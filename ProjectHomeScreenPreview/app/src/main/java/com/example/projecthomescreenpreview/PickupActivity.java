@@ -17,8 +17,8 @@ public class PickupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pickup);
 
+        //Top nav bar
         BottomNavigationView topNavView = findViewById(R.id.nav_viewTop);
-
         topNavView.setSelectedItemId(R.id.navigation_appname);
         final Intent intentProfile = new Intent(this, ProfileActivity.class);
         final Intent intentTree = new Intent(this, TreeActivity.class);
@@ -45,7 +45,6 @@ public class PickupActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-
 
     }
 

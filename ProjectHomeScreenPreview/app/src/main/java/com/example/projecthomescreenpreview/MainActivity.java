@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        BottomNavigationView bottomNavView = findViewById(R.id.nav_view);
         BottomNavigationView topNavView = findViewById(R.id.nav_viewTop);
 
         topNavView.setSelectedItemId(R.id.navigation_appname);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                                 item.setCheckable(false);
                                 break;
                             case R.id.navigation_appname:
-                                System.out.println("kom hier gewoon");
+                                System.out.println("Stay on page (test message)");
                                 break;
                             case R.id.navigation_tree:
                                 //startActivity(intentTree);
@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-        navView.setSelectedItemId(R.id.navigation_home);
-        navView.setOnNavigationItemSelectedListener(
+        bottomNavView.setSelectedItemId(R.id.navigation_home);
+        bottomNavView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case R.id.navigation_home:
                                 item.setCheckable(false);
-                                startActivity(intentMain);
+                                System.out.println("Stay on page (test message)");
                                 break;
                             case R.id.navigation_notifications:
                                 item.setCheckable(false);
-                                startActivity(intentMain);
+                                System.out.println("Stay on page (test message)");
                                 break;
                         }
                         return true;

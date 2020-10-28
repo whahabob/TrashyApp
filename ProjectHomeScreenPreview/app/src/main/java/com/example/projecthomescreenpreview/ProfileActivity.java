@@ -21,11 +21,11 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        //Top nav bar
+        //Nav bars
         BottomNavigationView topNavView = findViewById(R.id.nav_viewTop);
+        BottomNavigationView bottomNavView = findViewById(R.id.nav_view);
         topNavView.setSelectedItemId(R.id.navigation_appname);
         final Intent intentProfile = new Intent(this, ProfileActivity.class);
-        final Intent intentTree = new Intent(this, TreeActivity.class);
 
         topNavView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -40,7 +40,6 @@ public class ProfileActivity extends AppCompatActivity {
                                 System.out.println("kom hier gewoon");
                                 break;
                             case R.id.navigation_tree:
-                                //startActivity(intentTree);
                                 item.setCheckable(false);
                                 break;
                             default:
