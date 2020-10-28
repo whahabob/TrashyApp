@@ -16,11 +16,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class ShopActivity extends AppCompatActivity {
     ImageButton imageButton_Charity;
-    private Button btn_CashOut;
-    // above 07/10
+    ImageButton imageButton_Technology;
+    Button btn_Home;
+    Button btn_CashOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,16 +58,11 @@ public class ShopActivity extends AppCompatActivity {
                 });
 
 
-//Button with Lambada that links this activity to the profile activity
-// Not used as it requires lambada to be selected and configured
-        /*Button btn_CashOut = findViewById(R.id.btn_CashOut);
-        btn_CashOut.setOnClickListener(v -> {
 
-            //btn_CashOut.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ProfileActivity.class);
-            startActivity(intent);
-        });
-        */
+
+
+
+
 
         Button btn_CashOut = findViewById(R.id.btn_CashOut);
         btn_CashOut.setOnClickListener(new OnClickListener() {
@@ -75,25 +72,38 @@ public class ShopActivity extends AppCompatActivity {
             }
         });
 
+        Button btn_Home = findViewById(R.id.btn_Home);
+        btn_Home.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMainActivity();
+            }
+        });
+
         imageButton_Charity = (ImageButton) findViewById(R.id.imageButton_Charity);
         imageButton_Charity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openBuyingActivity();
-
-
+                openCharityInfoActivity();
             }
         });
+
+
+         
     }
     private void openProfileActivity(){
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
 
     }
-    private void openBuyingActivity() {
-        Intent intent = new Intent(ShopActivity.this, BuyingActivity.class);
+    private void openCharityInfoActivity() {
+        Intent intent = new Intent(ShopActivity.this, CharityInfoActivity.class);
         startActivity(intent);
+    };
 
+    private void openMainActivity() {
+        Intent intent = new Intent(ShopActivity.this, MainActivity.class);
+        startActivity(intent);
     };
 }
 
