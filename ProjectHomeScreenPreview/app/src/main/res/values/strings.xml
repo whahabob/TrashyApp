@@ -58,8 +58,8 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_plastic_bottles_recycled">Plastic bottles recycled:</string>
     <string name="title_glass_bottles_recycled">Glass bottles recycled:</string>
-    <string name="title_motivationalTextTreesPlanted">Jens, you recycled approximately 89kg of
-    plastic, and 48kg of glass. This accounts to a total of 137 kg!\n\nThank you!\n\nYour
+    <string name="title_motivationalTextTreesPlanted">Jens, you recycled approximately 16kg of
+    plastic, and 48kg of glass. This accounts to a total of 64 kg!\n\nThank you!\n\nYour
     next SUPER reward is at 150kg!</string>
     <string name="title_business">Business?</string>
     <string name="title_buy_trees">Do you want to ramp up your number of trees planted but have no
@@ -67,8 +67,6 @@
     tree will be added to your total amount of trees planted!</string>
     <string name="title_plant_a_tree">Plant a tree!</string>
     <string name="title_submit">Submit</string>
-
-
 
     <string name="title_activity_charity_info">CharityInfoActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
