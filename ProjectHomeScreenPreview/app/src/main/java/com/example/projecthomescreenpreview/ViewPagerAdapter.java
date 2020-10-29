@@ -18,7 +18,7 @@ public class ViewPagerAdapter extends PagerAdapter {
             new String(Character.toChars(0x1F332)) + " 0,4 Trees planted " +
             new String(Character.toChars(0x1F332)) +
             new String(Character.toChars(0x1F333));
-    String text2 = "2,3kg CO2 emission saved " + new String(Character.toChars(0x1F3ED));
+    String text2 = "62kg CO2 emission saved " + new String(Character.toChars(0x1F3ED));
 
     private String [] texties = {text1, text2};
 

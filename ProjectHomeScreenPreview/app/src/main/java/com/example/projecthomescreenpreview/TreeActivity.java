@@ -31,7 +31,6 @@ public class TreeActivity extends AppCompatActivity {
         BottomNavigationView topNavView = findViewById(R.id.nav_viewTop);
         topNavView.setSelectedItemId(R.id.navigation_appname);
         final Intent intentProfile = new Intent(this, ProfileActivity.class);
-        final Intent intentTree = new Intent(this, TreeActivity.class);
 
         topNavView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
