@@ -26,13 +26,17 @@
     </string>
 
     <string name="Charity_Marie_Curie">
-        "Marie Curie is remembered for her discovery of radium and polonium, and her huge contribution to the fight against cancer. This work continues to inspire our charity's mission to support people living with terminal illness, including cancer."
+        "Marie Curie is remembered for her discovery of radium and polonium, and her huge
+        contribution to the fight against cancer. This work continues to inspire our charity's
+        mission to support people living with terminal illness, including cancer."
 </string>
     <string name="British_Red_Cross">
-        "The British Red Cross has been helping millions of people in the UK and around the world get support they need when crisis strikes. From hiring a wheelchair or dealing with loneliness, to adjusting to life in a new country - we’re there when you need us."
+        "The British Red Cross has been helping millions of people in the UK and around the world
+        get support they need when crisis strikes. From hiring a wheelchair or dealing with
+        loneliness, to adjusting to life in a new country - we’re there when you need us."
     </string>
 
-
+    <!-- Pickup page -->
     <string name="title_postal_code">Postal code</string>
     <string name="title_house_number">House number</string>
     <string name="title_select_type">Select type of trash</string>
@@ -53,9 +57,10 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Tree page -->
     <string name="title_plastic_bottles_recycled">Plastic bottles recycled:</string>
     <string name="title_glass_bottles_recycled">Glass bottles recycled:</string>
     <string name="title_motivationalTextTreesPlanted">Jens, you recycled approximately 16kg of
